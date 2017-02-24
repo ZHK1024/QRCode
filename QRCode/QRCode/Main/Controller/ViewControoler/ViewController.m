@@ -41,7 +41,8 @@
 // 必须真机
 - (void)pushScanVC:(UIBarButtonItem *)item {
     ZHKQRCodeViewController *qrVC = [[ZHKQRCodeViewController alloc] init];
-    [self presentViewController:qrVC animated:YES completion:nil];
+//    [self presentViewController:qrVC animated:YES completion:nil];
+    [self.navigationController pushViewController:qrVC animated:YES];
 }
 
 
