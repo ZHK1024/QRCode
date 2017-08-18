@@ -26,4 +26,15 @@
  */
 - (NSString *)QRCodeMessgae;
 
+/**
+ 把黑白图片转换为制定颜色图片
+ 
+ @param image 需要转换的图片
+ @param red   红色 (0~255)
+ @param green 绿色 (0~255)
+ @param blue  蓝色 (0~255)
+ @return 转换结果
+ */
++ (UIImage *)imageBlackToTransparent:(UIImage *)image withRed:(CGFloat)red andGreen:(CGFloat)green andBlue:(CGFloat)blue;
+
 @end

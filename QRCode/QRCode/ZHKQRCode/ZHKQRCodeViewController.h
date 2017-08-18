@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface ZHKQRCodeViewController : UIViewController
+@protocol ZHKQRCodeDelegate <NSObject>
+
+@required
+// 扫描完成回调
+- (void)qrcodeScanSuccessWithMessage:(NSString *)message;
+
+@end
+
+@interface ZHKQRCodeViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate, ZHKQRCodeDelegate>
+
+@property (nonatomic, strong) AVCaptureSession           *session;
+@property (nonatomic, strong) AVCaptureVideoPreviewLayer *layer;
 
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		246D20731E6E9D1600A6D3A1 /* aaa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 246D20721E6E9D1600A6D3A1 /* aaa.jpg */; };
+		246D20751E6EAE4200A6D3A1 /* bbb.png in Resources */ = {isa = PBXBuildFile; fileRef = 246D20741E6EAE4200A6D3A1 /* bbb.png */; };
+		246D20771E6EAF7B00A6D3A1 /* ccc.png in Resources */ = {isa = PBXBuildFile; fileRef = 246D20761E6EAF7B00A6D3A1 /* ccc.png */; };
 		24D7985E1E5EDE2200F4540D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 24D7985D1E5EDE2200F4540D /* main.m */; };
 		24D798671E5EDE2200F4540D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D798651E5EDE2200F4540D /* Main.storyboard */; };
 		24D798691E5EDE2200F4540D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D798681E5EDE2200F4540D /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		246D20721E6E9D1600A6D3A1 /* aaa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = aaa.jpg; sourceTree = "<group>"; };
+		246D20741E6EAE4200A6D3A1 /* bbb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bbb.png; sourceTree = "<group>"; };
+		246D20761E6EAF7B00A6D3A1 /* ccc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ccc.png; sourceTree = "<group>"; };
 		24D798591E5EDE2200F4540D /* QRCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D7985D1E5EDE2200F4540D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		24D798661E5EDE2200F4540D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 		24D798781E5EDE6B00F4540D /* ViewControoler */ = {
 			isa = PBXGroup;
 			children = (
+				246D20721E6E9D1600A6D3A1 /* aaa.jpg */,
+				246D20741E6EAE4200A6D3A1 /* bbb.png */,
+				246D20761E6EAF7B00A6D3A1 /* ccc.png */,
 				24D798791E5EDE6B00F4540D /* ViewController.h */,
 				24D7987A1E5EDE6B00F4540D /* ViewController.m */,
 			);
@@ -188,8 +197,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				246D20751E6EAE4200A6D3A1 /* bbb.png in Resources */,
 				24D7986C1E5EDE2200F4540D /* LaunchScreen.storyboard in Resources */,
+				246D20731E6E9D1600A6D3A1 /* aaa.jpg in Resources */,
 				24D798691E5EDE2200F4540D /* Assets.xcassets in Resources */,
+				246D20771E6EAF7B00A6D3A1 /* ccc.png in Resources */,
 				24D798671E5EDE2200F4540D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +376,7 @@
 				24D798721E5EDE2200F4540D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

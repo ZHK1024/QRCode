@@ -7,19 +7,15 @@
 //
 
 #import "ZHKQRCodeViewController.h"
-#import <AVFoundation/AVFoundation.h>
 
-@interface ZHKQRCodeViewController () <AVCaptureMetadataOutputObjectsDelegate>
 
-@property (nonatomic, strong) AVCaptureSession           *session;
-@property (nonatomic, strong) AVCaptureVideoPreviewLayer *layer;
-@property (nonatomic, strong) UIImageView                *rimView;
-@property (nonatomic, strong) UIImageView                *lineView;
-@property (nonatomic, strong) NSTimer                    *timer;
-// (框 / 扫描线)层
-@property (nonatomic, strong) UIView                     *coverView;
-// 图像层
-@property (nonatomic, strong) UIView                     *graphicView;
+@interface ZHKQRCodeViewController () 
+
+@property (nonatomic, strong) UIImageView *rimView;      // 扫描识别边框
+@property (nonatomic, strong) UIImageView *lineView;     // 扫描动画线
+@property (nonatomic, strong) NSTimer     *timer;
+@property (nonatomic, strong) UIView      *coverView;    // (框 / 扫描线)层
+@property (nonatomic, strong) UIView      *graphicView;  // 图像层(摄像头拍摄下的场景显示)
 
 @end
 
@@ -126,13 +122,36 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     if (metadataObjects.count > 0) {
         AVMetadataMachineReadableCodeObject *object = [metadataObjects lastObject];
-        NSLog(@"%@", object.stringValue);
-        
+//        NSLog(@"%@", object.stringValue);
+        [self qrcodeScanSuccessWithMessage:object.stringValue];
         // 停止扫描
         [self stopRunning];
         [self stopAnimation];
     }else {
-        NSLog(@"%@", @"没有扫描到数据");
+        [self qrcodeScanSuccessWithMessage:nil];
+//        NSLog(@"%@", @"没有扫描到数据");
+    }
+}
+
+#pragma mark - 
+
+- (void)qrcodeScanSuccessWithMessage:(NSString *)message {
+    NSLog(@"message = %@", message);
+    
+    if (1) {
+        NSInteger length = message.length;
+        char *newBytes = malloc(length + 1);
+        for (int i = 0; i < length; ++i) {
+            unichar ch = [message characterAtIndex:i];
+            newBytes[i] = (char)ch;
+            printf("%c\n", ch);
+            
+        }
+        newBytes[length] = '\0';
+        printf("newBytes = %s\n", newBytes);
+        NSString *result = [NSString stringWithCString:newBytes encoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
+        NSLog(@"result = %@", result);
+        free(newBytes);
     }
 }
 
