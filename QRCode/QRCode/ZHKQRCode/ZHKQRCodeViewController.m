@@ -112,7 +112,7 @@
 - (void)animation {
     if (CGRectGetMinY(_lineView.frame) >= CGRectGetMaxY(self.view.frame)) {
         _lineView.center = CGPointMake(CGRectGetMidX(_rimView.frame), - CGRectGetHeight(_lineView.frame));
-    }else {
+    } else {
         CGPoint center = _lineView.center;
         _lineView.center = CGPointMake(center.x, center.y += 3);
     }
