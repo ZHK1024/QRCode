@@ -13,9 +13,9 @@
 
 @property (nonatomic, strong) UIImageView *rimView;      // 扫描识别边框
 @property (nonatomic, strong) UIImageView *lineView;     // 扫描动画线
-@property (nonatomic, strong) NSTimer     *timer;
 @property (nonatomic, strong) UIView      *coverView;    // (框 / 扫描线)层
 @property (nonatomic, strong) UIView      *graphicView;  // 图像层(摄像头拍摄下的场景显示)
+@property (nonatomic, strong) CADisplayLink *displayLink;
 
 @end
 
@@ -43,6 +43,12 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self stopRunning];
+    [self stopAnimation];
 }
 
 #pragma mark - Settings
@@ -97,9 +103,10 @@
 #pragma mark - Animation
 
 - (void)startAnimation {
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:0.004 target:self selector:@selector(animation) userInfo:nil repeats:YES];
-    _lineView.center = CGPointMake(CGRectGetMidX(_rimView.frame), - CGRectGetHeight(_lineView.frame));
+    self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(animation)];
+    [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
     [self.coverView addSubview:self.lineView];
+    _lineView.center = CGPointMake(CGRectGetMidX(_rimView.frame), - CGRectGetHeight(_lineView.frame));
 }
 
 - (void)animation {
@@ -112,9 +119,9 @@
 }
 
 - (void)stopAnimation {
-    [_timer invalidate];
-    self.timer = nil;
+    [_displayLink invalidate];
     [_lineView removeFromSuperview];
+    self.displayLink = nil;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjects delegate
@@ -122,12 +129,11 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     if (metadataObjects.count > 0) {
         AVMetadataMachineReadableCodeObject *object = [metadataObjects lastObject];
-//        NSLog(@"%@", object.stringValue);
         [self qrcodeScanSuccessWithMessage:object.stringValue];
         // 停止扫描
         [self stopRunning];
         [self stopAnimation];
-    }else {
+    } else {
         [self qrcodeScanSuccessWithMessage:nil];
 //        NSLog(@"%@", @"没有扫描到数据");
     }
