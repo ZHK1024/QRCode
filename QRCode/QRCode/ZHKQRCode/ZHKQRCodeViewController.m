@@ -11,10 +11,10 @@
 
 @interface ZHKQRCodeViewController () 
 
-@property (nonatomic, strong) UIImageView *rimView;      // 扫描识别边框
-@property (nonatomic, strong) UIImageView *lineView;     // 扫描动画线
-@property (nonatomic, strong) UIView      *coverView;    // (框 / 扫描线)层
-@property (nonatomic, strong) UIView      *graphicView;  // 图像层(摄像头拍摄下的场景显示)
+@property (nonatomic, strong) UIImageView   *rimView;      // 扫描识别边框
+@property (nonatomic, strong) UIImageView   *lineView;     // 扫描动画线
+@property (nonatomic, strong) UIView        *coverView;    // (框 / 扫描线)层
+@property (nonatomic, strong) UIView        *graphicView;  // 图像层(摄像头拍摄下的场景显示)
 @property (nonatomic, strong) CADisplayLink *displayLink;
 
 @end
