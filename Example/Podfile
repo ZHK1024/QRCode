@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'ZHKQRCode_Example' do
+  pod 'ZHKQRCode', :path => '../'
+
+  target 'ZHKQRCode_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
