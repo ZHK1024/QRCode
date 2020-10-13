@@ -7,8 +7,7 @@
 //
 
 #import "ZHKViewController.h"
-#import "UIImage+QRCode.h"
-#import "ZHKQRCodeViewController.h"
+#import <ZHKQRCode.h>
 
 @interface ZHKViewController ()
 

@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ZHKQRCode'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ZHKQRCode.'
+  s.version          = '0.1.1'
+  s.summary          = 'A QRCode Tool.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -32,9 +32,9 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'ZHKQRCode/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'ZHKQRCode' => ['ZHKQRCode/Assets/*.png']
-  # }
+  s.resource_bundles = {
+     'ZHKQRCode' => ['ZHKQRCode/Assets/**/*']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
